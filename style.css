@@ -27,3 +27,15 @@ footer{text-align:center;color:var(--mut);font-size:.8rem;padding:1.5rem}
 .hh{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}.hist td button{font:inherit;font-size:.8rem;padding:.3rem .6rem;border:1px solid #cbd5e1;background:#fff;border-radius:6px;cursor:pointer;margin-right:.3rem;min-height:32px}.paid{color:#047857;font-weight:700}.unpaid{color:#b45309;font-weight:700}.hist{overflow-x:auto}
 @media print{.hist{display:none}}
 /*nowrap-fix*/button.x{white-space:nowrap}table{table-layout:auto}@media(max-width:480px){td,th{padding-left:.2rem;padding-right:.2rem;font-size:.82rem}}
+@media(max-width:640px){
+#htab,#htab tbody{display:block}#htab thead{display:none}
+#htab tr{display:grid;grid-template-columns:1fr auto;gap:.25rem .6rem;border:1px solid var(--line);border-radius:10px;padding:.7rem;margin-bottom:.7rem}
+#htab td{border:0;padding:0;white-space:nowrap}
+#htab td:nth-child(1){font-weight:700}
+#htab td:nth-child(2){text-align:right;color:var(--mut)}
+#htab td:nth-child(3){grid-column:1/-1;white-space:normal}
+#htab td:nth-child(4){font-weight:700}
+#htab td:nth-child(5){text-align:right}
+#htab td:nth-child(6){grid-column:1/-1;display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.3rem}
+#htab td:nth-child(6) button{margin:0}
+}
