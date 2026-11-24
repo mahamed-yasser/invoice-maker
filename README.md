@@ -1,23 +1,26 @@
 # Invoice Maker
 
-![Screenshot](docs/screenshot.png)
+![Invoice Maker](docs/screenshot.png)
 
-_Screenshot (local test run, fictional demo data)._
+_Screenshot with sample data entered through the page (fictional client and numbers)._
 
-Browser invoice generator with live preview and print to PDF.
-
-**Demo project.** All businesses, products, people and numbers are fictional. Nothing is sent anywhere and no real data is collected.
+Browser invoice maker with saved clients, automatic numbering and an invoice history.
 
 ## What it does
-- Editable line items, tax and discount percentages, five currencies
-- Live totals, input validation, values saved in the browser (localStorage)
-- Print layout for Save as PDF
-- Browser-tested: totals, discount, currency, add/remove items, persistence, escaping of typed text
+- Line items, discount and tax percentages, five currencies, live totals and preview
+- Saved clients: save a client with an address, load it later; the address appears on the invoice preview and print
+- Automatic next invoice number (INV-001, INV-002 ...); saving the same number updates that invoice instead of duplicating it
+- Invoice history: open an invoice again, mark paid or unpaid, delete, see the unpaid total, export the history as CSV
+- Print layout for Save as PDF (uses the browser print dialog; the history and editor are hidden when printing)
+- Validation: business, client and at least one priced item are required before saving
+- Data stays in this browser (localStorage)
 
 ## Run it
-No build step. Open `index.html` in a browser, or serve the folder: `python3 -m http.server 8000`.
+Open `index.html` in a browser. No install, no build, no server, no account.
 
-## Stack
-HTML, CSS and plain JavaScript. No frameworks.
+## Tests and limits
+- Browser-tested in headless Chrome: 20 checks passed on the current code (clients, address in preview, numbering, history, paid status, CSV, persistence, XSS escaping, invalid invoices not saved, plus a mobile layout check).
+- It does not email invoices or create PDF files itself, and it does not sync between devices. Clearing site data deletes everything.
+- Plain HTML, CSS and JavaScript, no frameworks.
 
 Built by Mahamed Yasser.

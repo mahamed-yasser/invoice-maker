@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Invoice Maker | Demo by Mahamed Yasser</title><meta name="description" content="Demo invoice generator: line items, tax, discount, currency, print to PDF. Runs in the browser, nothing is uploaded.">
+<title>Invoice Maker | Mahamed Yasser</title><meta name="description" content="Invoice generator: saved clients, auto numbering, invoice history, line items, tax, discount, currency, print to PDF. Runs in the browser, nothing is uploaded.">
 <link rel="stylesheet" href="style.css"></head><body>
-<div class="demo-bar">Demo tool. Runs in your browser, nothing is uploaded. Sample data only.</div>
-<header class="top"><h1>Invoice Maker</h1><div class="actions"><button id="reset" class="ghost">New invoice</button><button id="print" class="btn">Print / Save PDF</button></div></header>
+<div class="demo-bar">Runs in your browser. Nothing is uploaded. Clients and invoices are stored only in this browser.</div>
+<header class="top"><h1>Invoice Maker</h1><div class="actions"><button id="reset" class="ghost">New invoice</button><button id="saveinv" class="ghost">Save to history</button><button id="print" class="btn">Print / Save PDF</button></div></header>
 <main class="layout">
 <form id="form" class="panel" autocomplete="off" novalidate>
 <h2>Details</h2>
@@ -13,13 +13,20 @@
 <div class="row2"><label>Tax %<input id="tax" type="number" min="0" max="100" step="0.1" value="14"></label><label>Discount %<input id="disc" type="number" min="0" max="100" step="0.1" value="0"></label></div>
 <label>Notes<textarea id="notes" rows="2">Payment due within 14 days. Thank you for your business.</textarea></label>
 <p id="err" class="err" role="alert" hidden></p>
+<h2>Saved clients</h2>
+<div class="row2"><label>Saved clients<select id="csel"></select></label><label>Client address / details<textarea id="caddr" rows="2" placeholder="Optional"></textarea></label></div>
+<div class="actions"><button type="button" id="csave" class="ghost">Save client</button><button type="button" id="cload" class="ghost">Use client</button><button type="button" id="cdel" class="ghost">Delete client</button></div>
 </form>
 <section class="panel paper" id="paper" aria-label="Invoice preview">
 <div class="ph"><div><h2 id="pFrom"></h2><p class="mut">Invoice <b id="pNo"></b></p></div><div class="mut right">Date<br><b id="pDate"></b></div></div>
-<p class="mut">Bill to</p><p class="big" id="pTo"></p>
+<p class="mut">Bill to</p><p class="big" id="pTo"></p><p class="mut" id="pAddr" style="white-space:pre-line"></p>
 <table><thead><tr><th>Item</th><th class="n">Qty</th><th class="n">Price</th><th class="n">Total</th></tr></thead><tbody id="pRows"></tbody></table>
 <dl class="tot"><div><dt>Subtotal</dt><dd id="tSub"></dd></div><div><dt>Discount</dt><dd id="tDisc"></dd></div><div><dt id="tTaxL">Tax</dt><dd id="tTax"></dd></div><div class="grand"><dt>Total due</dt><dd id="tTot"></dd></div></dl>
 <p class="mut" id="pNotes"></p>
-</section></main>
-<footer>Demo built by Mahamed Yasser. Fictional business and client.</footer>
-<script src="app.js"></script></body></html>
+</section>
+<section class="panel hist" style="grid-column:1/-1"><div class="hh"><h2>Invoice history</h2><div class="actions"><button id="hcsv" class="ghost">Export CSV</button></div></div>
+<p class="mut" id="hempty">No saved invoices yet. Click "Save to history" to keep one.</p>
+<table id="htab" hidden><thead><tr><th>No.</th><th>Date</th><th>Client</th><th class="n">Total</th><th>Status</th><th></th></tr></thead><tbody id="hrows"></tbody></table>
+<p class="mut" id="hsum"></p></section></main>
+<footer>Built by Mahamed Yasser. Data stays in this browser; clearing site data deletes it.</footer>
+<script src="util.js"></script><script src="app.js"></script></body></html>
