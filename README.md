@@ -1,5 +1,9 @@
 # Invoice Maker
 
+![Screenshot](docs/screenshot.png)
+
+_Screenshot (local test run, fictional demo data)._
+
 Browser invoice generator with live preview and print to PDF.
 
 **Demo project.** All businesses, products, people and numbers are fictional. Nothing is sent anywhere and no real data is collected.
